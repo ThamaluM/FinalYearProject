@@ -26,7 +26,7 @@ export default function PatientViewTab({route, navigation}) {
 
   const postRequest = () =>{
     fetch('http://prevelcer.herokuapp.com/', {
-    method: 'POST',
+    method: 'GET',
     headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
@@ -35,6 +35,15 @@ export default function PatientViewTab({route, navigation}) {
     firstParam: 'yourValue',
   })
 });
+
+  }
+
+  const getRequest = () =>{
+    return fetch('http://prevelcer.herokuapp.com/')
+    .then((response) => response.json()).then((json)=>console.log(json))
+    .catch((error) => {
+      console.error(error);
+    });
 
   }
 
@@ -76,7 +85,7 @@ export default function PatientViewTab({route, navigation}) {
         </Card>
 
      
-          <Button onPress={()=>postRequest() }><Text> Post Request</Text></Button>
+          <Button onPress={()=>getRequest() }><Text> Post Request</Text></Button>
           
           
       
